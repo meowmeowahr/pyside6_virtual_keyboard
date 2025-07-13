@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Keyboard Layout Configuration File for Emojis -->
+<KeyboardLayout name="Emojis">
+    <!-- Row 1: Smileys and People -->
+    <Row type="keyRow">
+        <Key symbol="😀" keystroke="😀" width="1.0"/>
+        <Key symbol="😂" keystroke="😂" width="1.0"/>
+        <Key symbol="😊" keystroke="😊" width="1.0"/>
+        <Key symbol="😍" keystroke="😍" width="1.0"/>
+        <Key symbol="😎" keystroke="😎" width="1.0"/>
+        <Key symbol="🥳" keystroke="🥳" width="1.0"/>
+        <Key symbol="😭" keystroke="😭" width="1.0"/>
+        <Key symbol="😡" keystroke="😡" width="1.0"/>
+        <Key symbol="👍" keystroke="👍" width="1.0"/>
+        <Key symbol="👎" keystroke="👎" width="1.0"/>
+        <Key symbol="👏" keystroke="👏" width="1.0"/>
+        <Key symbol="👋" keystroke="👋" width="1.0"/>
+    </Row>
+
+    <!-- Row 2: Animals and Nature -->
+    <Row type="keyRow">
+        <Key symbol="🐶" keystroke="🐶" width="1.0"/>
+        <Key symbol="🐱" keystroke="🐱" width="1.0"/>
+        <Key symbol="🦁" keystroke="🦁" width="1.0"/>
+        <Key symbol="🌸" keystroke="🌸" width="1.0"/>
+        <Key symbol="🌼" keystroke="🌼" width="1.0"/>
+        <Key symbol="🌳" keystroke="🌳" width="1.0"/>
+        <Key symbol="☀️" keystroke="☀️" width="1.0"/>
+        <Key symbol="🌧️" keystroke="🌧️" width="1.0"/>
+        <Key symbol="🌈" keystroke="🌈" width="1.0"/>
+        <Key symbol="🌍" keystroke="🌍" width="1.0"/>
+        <Key symbol="🔥" keystroke="🔥" width="1.0"/>
+        <Key symbol="💧" keystroke="💧" width="1.0"/>
+    </Row>
+
+    <!-- Row 3: Food and Drink -->
+    <Row type="keyRow">
+        <Key symbol="🍎" keystroke="🍎" width="1.0"/>
+        <Key symbol="🍔" keystroke="🍔" width="1.0"/>
+        <Key symbol="🍕" keystroke="🍕" width="1.0"/>
+        <Key symbol="🍟" keystroke="🍟" width="1.0"/>
+        <Key symbol="☕" keystroke="☕" width="1.0"/>
+        <Key symbol="🍦" keystroke="🍦" width="1.0"/>
+        <Key symbol="🎂" keystroke="🎂" width="1.0"/>
+        <Key symbol="🍾" keystroke="🍾" width="1.0"/>
+        <Key symbol="🥂" keystroke="🥂" width="1.0"/>
+        <Key symbol="🍣" keystroke="🍣" width="1.0"/>
+        <Key symbol="🍜" keystroke="🍜" width="1.0"/>
+        <Key symbol="ICON_BKSP" keystroke="backspace" width="1.0"/>
+    </Row>
+
+    <!-- Row 4: Travel and Places, and layout switcher -->
+    <Row type="keyRow">
+        <Key symbol="ABC" layoutLink="ROOT" width="1.5"/> <!-- Link back to main QWERTY -->
+        <Key symbol="🚗" keystroke="🚗" width="1.0"/>
+        <Key symbol="✈️" keystroke="✈️" width="1.0"/>
+        <Key symbol="🏠" keystroke="🏠" width="1.0"/>
+        <Key symbol="🏢" keystroke="🏢" width="1.0"/>
+        <Key symbol="🗼" keystroke="🗼" width="1.0"/>
+        <Key symbol="🗽" keystroke="🗽" width="1.0"/>
+        <Key symbol="Space" keystroke=" " width="3.0"/>
+        <Key symbol="123" layoutLink="NumSym.xml" width="1.5"/> <!-- Link back to numbers/symbols -->
+    </Row>
+</KeyboardLayout>

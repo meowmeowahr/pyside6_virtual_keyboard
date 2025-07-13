@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Keyboard Layout Configuration File for Numbers and Symbols -->
+<KeyboardLayout name="Numbers and Symbols">
+    <!-- Row 1: Numbers and basic symbols -->
+    <Row type="keyRow">
+        <Key symbol="1" keystroke="1" altKeystroke="!" width="1.0"/>
+        <Key symbol="2" keystroke="2" altKeystroke="@" width="1.0"/>
+        <Key symbol="3" keystroke="3" altKeystroke="#" width="1.0"/>
+        <Key symbol="4" keystroke="4" altKeystroke="$" width="1.0"/>
+        <Key symbol="5" keystroke="5" altKeystroke="%" width="1.0"/>
+        <Key symbol="6" keystroke="6" altKeystroke="^" width="1.0"/>
+        <Key symbol="7" keystroke="7" altKeystroke="&amp;" width="1.0"/>
+        <Key symbol="8" keystroke="8" altKeystroke="*" width="1.0"/>
+        <Key symbol="9" keystroke="9" altKeystroke="(" width="1.0"/>
+        <Key symbol="0" keystroke="0" altKeystroke=")" width="1.0"/>
+        <Key symbol="=" keystroke="=" altKeystroke="+" width="1.0"/>
+    </Row>
+
+    <!-- Row 2: More symbols and punctuation -->
+    <Row type="keyRow">
+        <Key symbol="[" keystroke="[" altKeystroke="{" width="1.0"/>
+        <Key symbol="]" keystroke="]" altKeystroke="}" width="1.0"/>
+        <Key symbol="\" keystroke="\" altKeystroke="|" width="1.0"/>
+        <Key symbol=";" keystroke=";" altKeystroke=":" width="1.0"/>
+        <Key symbol="'" keystroke="'" altKeystroke="&quot;" width="1.0"/>
+        <Key symbol="," keystroke="," altKeystroke="&lt;" width="1.0"/>
+        <Key symbol="." keystroke="." altKeystroke="&gt;" width="1.0"/>
+        <Key symbol="/" keystroke="/" altKeystroke="?" width="1.0"/>
+        <Key symbol="~" keystroke="`" altKeystroke="~" width="1.0"/>
+    </Row>
+
+    <!-- Row 3: Common symbols and layout switchers -->
+    <Row type="keyRow">
+        <Key symbol="€" keystroke="€" width="1.0"/>
+        <Key symbol="£" keystroke="£" width="1.0"/>
+        <Key symbol="¥" keystroke="¥" width="1.0"/>
+        <Key symbol="&amp;" keystroke="&amp;" width="1.0"/>
+        <Key symbol="*" keystroke="*" width="1.0"/>
+        <Key symbol="(" keystroke="(" width="1.0"/>
+        <Key symbol=")" keystroke=")" width="1.0"/>
+        <Key symbol="-" keystroke="-" width="1.0"/>
+        <Key symbol="+" keystroke="+" width="1.0"/>
+        <Key symbol="ICON_BKSP" keystroke="backspace" width="1.5"/>
+    </Row>
+
+    <!-- Row 4: Additional symbols and navigation -->
+    <Row type="keyRow">
+        <Key symbol="ABC" layoutLink="ROOT" width="3.0"/> <!-- Link back to main QWERTY -->
+        <Key symbol="Emoji" layoutLink="Emojis.xml" width="1.5"/>
+        <Key symbol="Space" keystroke=" " width="5.0"/>
+        <Key symbol="Return" keystroke="return" width="1.5"/>
+    </Row>
+</KeyboardLayout>

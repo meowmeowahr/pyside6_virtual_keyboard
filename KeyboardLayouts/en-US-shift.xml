@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Keyboard Layout Configuration File for Shifted QWERTY (Uppercase and Shifted Symbols) -->
+<KeyboardLayout name="Shifted QWERTY">
+    <Row type="keyRow">
+        <Key symbol="Q" keystroke="Q" width="1.0"/>
+        <Key symbol="W" keystroke="W" width="1.0"/>
+        <Key symbol="E" keystroke="E" width="1.0"/>
+        <Key symbol="R" keystroke="R" width="1.0"/>
+        <Key symbol="T" keystroke="T" width="1.0"/>
+        <Key symbol="Y" keystroke="Y" width="1.0"/>
+        <Key symbol="U" keystroke="U" width="1.0"/>
+        <Key symbol="I" keystroke="I" width="1.0"/>
+        <Key symbol="O" keystroke="O" width="1.0"/>
+        <Key symbol="P" keystroke="P" width="1.0"/>
+    </Row>
+
+    <Row type="keyRow">
+        <Spacer width="0.5"/>
+        <Key symbol="A" keystroke="A" width="1.0"/>
+        <Key symbol="S" keystroke="S" width="1.0"/>
+        <Key symbol="D" keystroke="D" width="1.0"/>
+        <Key symbol="F" keystroke="F" width="1.0"/>
+        <Key symbol="G" keystroke="G" width="1.0"/>
+        <Key symbol="H" keystroke="H" width="1.0"/>
+        <Key symbol="J" keystroke="J" width="1.0"/>
+        <Key symbol="K" keystroke="K" width="1.0"/>
+        <Key symbol="L" keystroke="L" width="1.0"/>
+    </Row>
+
+    <Row type="keyRow">
+        <!-- Shift key now indicates active state -->
+        <Key symbol="ICON_UNSHIFT" layoutLink="en-US.xml" width="2.0"/>
+        <Key symbol="Z" keystroke="Z" width="1.0"/>
+        <Key symbol="X" keystroke="X" width="1.0"/>
+        <Key symbol="C" keystroke="C" width="1.0"/>
+        <Key symbol="V" keystroke="V" width="1.0"/>
+        <Key symbol="B" keystroke="B" width="1.0"/>
+        <Key symbol="N" keystroke="N" width="1.0"/>
+        <Key symbol="M" keystroke="M" width="1.0"/>
+        <Key symbol="ICON_BKSP" keystroke="backspace" width="2.0"/>
+    </Row>
+
+    <Row type="keyRow">
+        <Key symbol="123" layoutLink="NumSym.xml" width="1.5"/>
+        <!-- Comma key is now '<' when shifted -->
+        <Key symbol="&lt;" keystroke="&lt;" altKeystroke="," width="1.0"/>
+        <Key symbol="Emoji" layoutLink="Emojis.xml" width="1.5"/>
+        <Key symbol=" " keystroke=" " width="5.0"/>
+        <!-- Period key is now '>' when shifted -->
+        <Key symbol="&gt;" keystroke="&gt;" altKeystroke="." width="1.0"/>
+        <Key symbol="Return" keystroke="return" width="1.5"/>
+    </Row>
+</KeyboardLayout>

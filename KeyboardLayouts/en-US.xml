@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KeyboardLayout name="Standard QWERTY">
+    <Row type="keyRow">
+        <Key symbol="q" keystroke="q" width="1.0"/>
+        <Key symbol="w" keystroke="w" width="1.0"/>
+        <Key symbol="e" keystroke="e" width="1.0"/>
+        <Key symbol="r" keystroke="r" width="1.0"/>
+        <Key symbol="t" keystroke="t" width="1.0"/>
+        <Key symbol="y" keystroke="y" width="1.0"/>
+        <Key symbol="u" keystroke="u" width="1.0"/>
+        <Key symbol="i" keystroke="i" width="1.0"/>
+        <Key symbol="o" keystroke="o" width="1.0"/>
+        <Key symbol="p" keystroke="p" width="1.0"/>
+    </Row>
+
+    <Row type="keyRow">
+        <Spacer width="0.5"/>
+        <Key symbol="a" keystroke="a" width="1.0"/>
+        <Key symbol="s" keystroke="s" width="1.0"/>
+        <Key symbol="d" keystroke="d" width="1.0"/>
+        <Key symbol="f" keystroke="f" width="1.0"/>
+        <Key symbol="g" keystroke="g" width="1.0"/>
+        <Key symbol="h" keystroke="h" width="1.0"/>
+        <Key symbol="j" keystroke="j" width="1.0"/>
+        <Key symbol="k" keystroke="k" width="1.0"/>
+        <Key symbol="l" keystroke="l" width="1.0"/>
+    </Row>
+
+    <Row type="keyRow">
+        <Key symbol="ICON_SHIFT" layoutLink="en-US-shift.xml" width="2.0"/>
+        <Key symbol="z" keystroke="z" width="1.0"/>
+        <Key symbol="x" keystroke="x" width="1.0"/>
+        <Key symbol="c" keystroke="c" width="1.0"/>
+        <Key symbol="v" keystroke="v" width="1.0"/>
+        <Key symbol="b" keystroke="b" width="1.0"/>
+        <Key symbol="n" keystroke="n" width="1.0"/>
+        <Key symbol="m" keystroke="m" width="1.0"/>
+        <Key symbol="ICON_BKSP" keystroke="backspace" width="2.0"/>
+    </Row>
+
+    <Row type="keyRow">
+        <Key symbol="123" layoutLink="NumSym.xml" width="1.5"/>
+        <Key symbol="," keystroke="," altKeystroke="&lt;" width="1.0"/>
+        <Key symbol="Emoji" layoutLink="Emojis.xml" width="1.5"/>
+        <Key symbol="" keystroke=" " width="5.0"/>
+        <Key symbol="." keystroke="." altKeystroke="&gt;" width="1.0"/>
+        <Key symbol="Return" keystroke="return" width="1.5"/>
+    </Row>
+</KeyboardLayout>

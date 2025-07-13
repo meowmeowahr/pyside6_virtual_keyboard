@@ -1,0 +1,1 @@
+# Virtual Keyboard for PySide6 (and global keystroke interceptor)
