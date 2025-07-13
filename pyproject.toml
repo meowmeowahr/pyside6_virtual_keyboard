@@ -4,4 +4,9 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "fonticon-materialdesignicons7>=7.2.96",
+    "loguru>=0.7.3",
+    "pyside6-essentials>=6.9.1",
+    "superqt>=0.7.5",
+]
