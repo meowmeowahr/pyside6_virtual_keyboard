@@ -46,19 +46,19 @@
         <Key symbol="🥂" keystroke="🥂" width="1.0"/>
         <Key symbol="🍣" keystroke="🍣" width="1.0"/>
         <Key symbol="🍜" keystroke="🍜" width="1.0"/>
-        <Key symbol="ICON_BKSP" keystroke="backspace" width="1.0"/>
+        <Key symbol="ICON_BKSP" keystroke="backspace" width="1.0" style="Tertiary"/>
     </Row>
 
     <!-- Row 4: Travel and Places, and layout switcher -->
     <Row type="keyRow">
-        <Key symbol="ABC" layoutLink="ROOT" width="1.5"/> <!-- Link back to main QWERTY -->
+        <Key symbol="ABC" layoutLink="ROOT" width="1.5" style="Secondary"/> <!-- Link back to main QWERTY -->
         <Key symbol="🚗" keystroke="🚗" width="1.0"/>
         <Key symbol="✈️" keystroke="✈️" width="1.0"/>
         <Key symbol="🏠" keystroke="🏠" width="1.0"/>
         <Key symbol="🏢" keystroke="🏢" width="1.0"/>
         <Key symbol="🗼" keystroke="🗼" width="1.0"/>
         <Key symbol="🗽" keystroke="🗽" width="1.0"/>
-        <Key symbol="Space" keystroke=" " width="3.0"/>
-        <Key symbol="123" layoutLink="NumSym.xml" width="1.5"/> <!-- Link back to numbers/symbols -->
+        <Key symbol="" keystroke=" " width="3.0"/>
+        <Key symbol="123" layoutLink="NumSym.xml" width="1.5" style="Secondary"/> <!-- Link back to numbers/symbols -->
     </Row>
 </KeyboardLayout>

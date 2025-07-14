@@ -29,7 +29,7 @@
 
     <Row type="keyRow">
         <!-- Shift key now indicates active state -->
-        <Key symbol="ICON_UNSHIFT" layoutLink="en-US.xml" width="2.0"/>
+        <Key symbol="ICON_UNSHIFT" layoutLink="en-US.xml" width="2.0" style="Tertiary"/>
         <Key symbol="Z" keystroke="Z" width="1.0"/>
         <Key symbol="X" keystroke="X" width="1.0"/>
         <Key symbol="C" keystroke="C" width="1.0"/>
@@ -37,17 +37,17 @@
         <Key symbol="B" keystroke="B" width="1.0"/>
         <Key symbol="N" keystroke="N" width="1.0"/>
         <Key symbol="M" keystroke="M" width="1.0"/>
-        <Key symbol="ICON_BKSP" keystroke="backspace" width="2.0"/>
+        <Key symbol="ICON_BKSP" keystroke="backspace" width="2.0" style="Tertiary"/>
     </Row>
 
     <Row type="keyRow">
-        <Key symbol="123" layoutLink="NumSym.xml" width="1.5"/>
+        <Key symbol="123" layoutLink="NumSym.xml" width="1.5" style="Secondary"/>
         <!-- Comma key is now '<' when shifted -->
         <Key symbol="&lt;" keystroke="&lt;" altKeystroke="," width="1.0"/>
-        <Key symbol="Emoji" layoutLink="Emojis.xml" width="1.5"/>
+        <Key symbol="Emoji" layoutLink="Emojis.xml" width="1.5" style="Tertiary"/>
         <Key symbol=" " keystroke=" " width="5.0"/>
         <!-- Period key is now '>' when shifted -->
         <Key symbol="&gt;" keystroke="&gt;" altKeystroke="." width="1.0"/>
-        <Key symbol="Return" keystroke="return" width="1.5"/>
+        <Key symbol="Return" keystroke="return" width="1.5" style="Primary"/>
     </Row>
 </KeyboardLayout>

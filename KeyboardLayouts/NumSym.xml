@@ -40,14 +40,14 @@
         <Key symbol=")" keystroke=")" width="1.0"/>
         <Key symbol="-" keystroke="-" width="1.0"/>
         <Key symbol="+" keystroke="+" width="1.0"/>
-        <Key symbol="ICON_BKSP" keystroke="backspace" width="1.5"/>
+        <Key symbol="ICON_BKSP" keystroke="backspace" width="1.5" style="Tertiary"/>
     </Row>
 
     <!-- Row 4: Additional symbols and navigation -->
     <Row type="keyRow">
-        <Key symbol="ABC" layoutLink="ROOT" width="3.0"/> <!-- Link back to main QWERTY -->
-        <Key symbol="Emoji" layoutLink="Emojis.xml" width="1.5"/>
-        <Key symbol="Space" keystroke=" " width="5.0"/>
-        <Key symbol="Return" keystroke="return" width="1.5"/>
+        <Key symbol="ABC" layoutLink="ROOT" width="3.0" style="Secondary"/> <!-- Link back to main QWERTY -->
+        <Key symbol="Emoji" layoutLink="Emojis.xml" width="1.5" style="Tertiary"/>
+        <Key symbol="" keystroke=" " width="5.0"/>
+        <Key symbol="Return" keystroke="return" width="1.5" style="Primary"/>
     </Row>
 </KeyboardLayout>

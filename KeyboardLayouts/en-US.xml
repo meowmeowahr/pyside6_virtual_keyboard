@@ -27,7 +27,7 @@
     </Row>
 
     <Row type="keyRow">
-        <Key symbol="ICON_SHIFT" layoutLink="en-US-shift.xml" width="2.0"/>
+        <Key symbol="ICON_SHIFT" layoutLink="en-US-shift.xml" width="2.0" style="Tertiary"/>
         <Key symbol="z" keystroke="z" width="1.0"/>
         <Key symbol="x" keystroke="x" width="1.0"/>
         <Key symbol="c" keystroke="c" width="1.0"/>
@@ -35,15 +35,15 @@
         <Key symbol="b" keystroke="b" width="1.0"/>
         <Key symbol="n" keystroke="n" width="1.0"/>
         <Key symbol="m" keystroke="m" width="1.0"/>
-        <Key symbol="ICON_BKSP" keystroke="backspace" width="2.0"/>
+        <Key symbol="ICON_BKSP" keystroke="backspace" width="2.0" style="Tertiary"/>
     </Row>
 
     <Row type="keyRow">
-        <Key symbol="123" layoutLink="NumSym.xml" width="1.5"/>
+        <Key symbol="123" layoutLink="NumSym.xml" width="1.5" style="Secondary"/>
         <Key symbol="," keystroke="," altKeystroke="&lt;" width="1.0"/>
-        <Key symbol="Emoji" layoutLink="Emojis.xml" width="1.5"/>
+        <Key symbol="Emoji" layoutLink="Emojis.xml" width="1.5" style="Tertiary"/>
         <Key symbol="" keystroke=" " width="5.0"/>
         <Key symbol="." keystroke="." altKeystroke="&gt;" width="1.0"/>
-        <Key symbol="Return" keystroke="return" width="1.5"/>
+        <Key symbol="Return" keystroke="return" width="1.5" style="Primary"/>
     </Row>
 </KeyboardLayout>

@@ -1,8 +1,6 @@
 import functools
 from pathlib import Path
-import sys
-from typing import Any, ClassVar
-import unicodedata
+from typing import Any
 import xml.etree.ElementTree as ET
 
 from PySide6.QtGui import QKeyEvent
@@ -10,32 +8,46 @@ from loguru import logger
 
 from PySide6.QtWidgets import (
     QToolButton,
-    QMainWindow,
-    QApplication,
     QHBoxLayout,
     QVBoxLayout,
     QFrame,
     QWidget,
     QStackedWidget,
     QLineEdit,
+    QTextEdit
 )
-from PySide6.QtCore import Signal, Qt
+from PySide6.QtCore import Qt
 from fonticon_mdi7 import MDI7
 from superqt.fonticon import icon
+
+from key_bus import VirtualKeyEventBus
+
 
 KEY_SIZE_W = 48
 KEY_SIZE_H = 36
 
 
-class VirtualKeyboardLineEdit(QLineEdit):
+class VirtualLineEdit(QLineEdit):
+    _virtual = True # ignore events in GlobalKeyEventBus
+    def __init__(self):
+        super().__init__()
+
+        if not VirtualKeyEventBus.instance:
+            msg = "Must create a VirtualKeyEventBus object before creating a virtual input"
+            raise RuntimeError(msg)
+
+        self.require_focus = True
+        VirtualKeyEventBus.instance.key_event.connect(self.key_slot)
+
     def keyPressEvent(self, ev: QKeyEvent) -> None:
         ev.ignore()
         logger.trace(f"{self} rejected physical keyboard event, {ev.key()}")
 
-    def connect_virtual(self, virt: "VirtualKeyboard"):
-        virt.key_event.connect(self.key_slot)
 
     def key_slot(self, key: str):
+        if not self.hasFocus() and self.require_focus:
+            return
+        
         match key:
             case "backspace":
                 self.backspace()
@@ -44,17 +56,47 @@ class VirtualKeyboardLineEdit(QLineEdit):
             case _:  # everything else
                 self.insert(key)
 
+class VirtualTextEdit(QTextEdit):
+    _virtual = True # ignore events in GlobalKeyEventBus
+    def __init__(self):
+        super().__init__()
+
+        if not VirtualKeyEventBus.instance:
+            msg = "Must create a VirtualKeyEventBus object before creating a virtual input"
+            raise RuntimeError(msg)
+
+        self.require_focus = True
+        VirtualKeyEventBus.instance.key_event.connect(self.key_slot)
+
+    def keyPressEvent(self, ev: QKeyEvent) -> None:
+        ev.ignore()
+        logger.trace(f"{self} rejected physical keyboard event, {ev.key()}")
+
+
+    def key_slot(self, key: str):
+        if not self.hasFocus() and self.require_focus:
+            return
+        
+        match key:
+            case "backspace":
+                cursor = self.textCursor()
+                if cursor.hasSelection():
+                    cursor.removeSelectedText()
+                else:
+                    cursor.deletePreviousChar()
+                self.setTextCursor(cursor)
+            case "return":
+                self.append("")
+            case _:  # everything else
+                self.insertPlainText(key)
+
 
 class VirtualKeyboard(QFrame):
-    key_event = Signal(str)
-    instance: "ClassVar[VirtualKeyboard | None]" = None
-
     def __init__(self, root_layout_path: Path):
         super().__init__()
-        if not VirtualKeyboard.instance:
-            VirtualKeyboard.instance = self
-        else:
-            msg = "Only one VirtualKeyboard can be used at a time"
+
+        if not VirtualKeyEventBus.instance:
+            msg = "Must create a VirtualKeyEventBus object before creating a virtual keyboard"
             raise RuntimeError(msg)
 
         self.root_layout_path = root_layout_path
@@ -117,6 +159,7 @@ class VirtualKeyboard(QFrame):
                     key_data = {
                         "type": "key",
                         "symbol": element.get("symbol", ""),
+                        "style": element.get("style", "Std"),
                         "keystroke": element.get("keystroke"),
                         "width": float(element.get("width", 1.0)),
                     }
@@ -173,6 +216,10 @@ class VirtualKeyboard(QFrame):
                         self._build_layouts(next_layout_path, layout_link)  # yuck
 
     def _build_layout_widget(self, layout_data: dict[str, Any]) -> QWidget:
+        if not VirtualKeyEventBus.instance:
+            msg = "Must create a VirtualKeyEventBus object before creating a virtual input"
+            raise RuntimeError(msg)
+        
         widget = QWidget()
         ui_layout = QVBoxLayout(widget)
 
@@ -187,6 +234,7 @@ class VirtualKeyboard(QFrame):
                         row_layout.addSpacing(int(element["width"] * KEY_SIZE_W))
                     case "key":
                         button = QToolButton()
+                        button.setObjectName(f"VirtualKeyboard_Key_{element['style']}")
                         button.setFocusPolicy(
                             Qt.FocusPolicy.NoFocus
                         )  # don't allow the real keyboard to press keys on the virtual keyboard
@@ -236,7 +284,7 @@ class VirtualKeyboard(QFrame):
                             if element["keystroke"]:
                                 button.clicked.connect(
                                     functools.partial(
-                                        self.key_event.emit, element["keystroke"]
+                                        VirtualKeyEventBus.instance.key_event.emit, element["keystroke"]
                                     )
                                 )
                                 logger.trace(
@@ -276,93 +324,3 @@ class VirtualKeyboard(QFrame):
         target_index = self._layout_name_to_index[target_layout_link_name]
         self.stack.setCurrentIndex(target_index)
         logger.debug(f"Switched to layout: {target_layout_link_name}")
-
-
-class TestWindow(QMainWindow):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self.widget = QWidget()
-        self.setCentralWidget(self.widget)
-
-        self.root_layout = QVBoxLayout(self.widget)
-
-        self.physical = QLineEdit()
-        self.physical.setPlaceholderText(
-            "Physical keystrokes will appear here only when focus is given"
-        )
-        self.root_layout.addWidget(self.physical)
-
-        self.physical_always = QLineEdit()
-        self.physical_always.setPlaceholderText(
-            "Physical keystrokes will ALWAYS appear here NO MATTER WHAT FOCUS IS GIVEN"
-        )
-        self.physical_always.keyPressEvent = (
-            lambda *_: None
-        )  # this will force the line edit to ignore keystrokes - they will be injected below
-        self.grabKeyboard()  # redirect all key events to keyPressEvent defined below
-        self.physical_always.mouseMoveEvent = (
-            lambda *_: None
-        )  # I can't find a way around this: prevent selection
-        self.physical_always.mouseDoubleClickEvent = (
-            lambda *_: None
-        )  # I can't find a way around this: prevent selection
-        self.physical_always.mousePressEvent = (
-            lambda *_: None
-        )  # I can't find a way around this: prevent selection
-        self.physical_always.mouseReleaseEvent = (
-            lambda *_: None
-        )  # I can't find a way around this: prevent selection
-        self.physical_always.focusInEvent = (
-            lambda *_: self.physical_always.setSelection(
-                len(self.physical_always.text()), len(self.physical_always.text())
-            )
-        )  # I can't find a way around this: prevent selection
-        self.root_layout.addWidget(self.physical_always)
-
-        self.preview = VirtualKeyboardLineEdit()
-        self.preview.setPlaceholderText("Virtual keystrokes will appear here")
-        self.root_layout.addWidget(self.preview)
-
-        self.root_layout.addStretch()
-
-        self.keyboard = VirtualKeyboard(Path("KeyboardLayouts/en-US.xml"))
-        self.preview.connect_virtual(self.keyboard)
-        self.root_layout.addWidget(self.keyboard)
-
-        self.show()
-
-    def keyPressEvent(self, event: QKeyEvent) -> None:
-        """
-        The global event for the phyical keyboard.
-        Almost all keys that are recognized by your OS/X11/Wayland are passed through this function
-        """
-
-        # kinda janky, but it seems to work perfectly
-        # do this before everything else
-        focused = self.focusWidget()
-        if hasattr(focused, "keyPressEvent"):
-            focused.keyPressEvent(event)
-        event.accept()
-
-        if (
-            event.key() == Qt.Key.Key_Backspace
-        ):  # some keys like backspace need to be treated differently
-            self.physical_always.backspace()
-            return
-        elif event.key() == Qt.Key.Key_Return:
-            # maybe we can do something with the tag here?
-            logger.info("Global physical return pressed")
-            return  # this also causes issues with the line edit
-        elif 0x110000 > event.key() and (
-            unicodedata.category(chr(event.key())) not in ["c"]
-        ):
-            self.physical_always.insert(event.text())
-
-
-if __name__ == "__main__":
-    logger.remove()
-    logger.add(sys.stderr, level="TRACE")
-    app = QApplication(sys.argv)
-    win = TestWindow()
-    app.exec()
